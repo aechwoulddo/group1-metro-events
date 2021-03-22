@@ -16,3 +16,14 @@ class UserRegistrationForm(forms.ModelForm):
     class Meta:
         model = RegularUser
         fields = ['user_id','gender',]
+        
+## newly added
+class UserForm(UserCreationForm):
+	class Meta:
+		model = user
+		fields = ['first_name','last_name','gender', 'email', 'password']
+
+class EventsForm(UserCreationForm):
+	class Meta:
+		model = event
+		fields = ['title','description','event_type','start_date','end_date','start_time','end_time','status','upvotes_count']
