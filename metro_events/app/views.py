@@ -64,5 +64,27 @@ class UserRegistrationView(View):
 class UserDashboardView(View):
     def get(self, request):
         return render(request, 'user/user-dashboard.html')
+        
+class HomepageView(View):
+    def get(self, request):
+        return render(request, 'home.html')
 
-    
+class UserDashboardView(View):
+    def get(self, request):
+        user = User.objects.all()
+        event = Event.objects.all()
+        print(event)
+        context = {
+            'user': user,
+            'event': event,
+        }
+        return render(request, 'user.html', context)
+
+class OrganizerDashboardView(View):
+    def get(self, request):
+        return render(request, 'organizer.html')
+
+class AdministratorDashboardView(View):
+    def get(self, request):
+        return render(request, 'administrator.html')
+  

@@ -31,3 +31,30 @@ class AdministratorUser(models.Model):
 
     class Meta:
         db_table = "Administrator"
+
+## newly added 
+class User(models.Model):
+    user_id = models.AutoField(primary_key=True)
+    first_name = models.CharField(max_length=200, null=True)
+    last_name = models.CharField(max_length=200, null=True)
+    gender = models.CharField(max_length=200, null=True)
+    email = models.CharField(max_length=200, null=True)
+    password = models.CharField(max_length=200, null=True)
+
+    class Meta:
+        db_table = "user"
+        
+class Event(models.Model):
+    event_id = models.AutoField(primary_key=True)
+    title = models.CharField(max_length=200, null=True)
+    description = models.CharField(max_length=200, null=True)
+    event_type = models.CharField(max_length=200, null=True)
+    start_date = models.DateField(default = timezone.now)
+    end_date = models.DateField(default = timezone.now)
+    start_time = models.TimeField(auto_now=False)
+    end_time = models.TimeField(auto_now=False)
+    status = models.CharField(max_length=200, null=True)
+    upvotes_count = models.IntegerField(default=0)
+
+    class Meta:
+        db_table = "event"
