@@ -21,10 +21,13 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
-
+app_name = 'metro_events'
 urlpatterns = [
     # For Django Admin
     path('admin/', admin.site.urls, name='admin'),
-
+    path('homepage/', views.HomepageView.as_view(), name="homepage_view"),
+    path('userdashboard/', views.UserDashboardView.as_view(), name='user_dashboard'),
+    path('organizerdashboard/', views.OrganizerDashboardView.as_view(), name='organizer_dashboard'),
+    path('administratordashboard/', views.AdministratorDashboardView.as_view(), name='administrator_dashboard')
     path('', include('app.urls'), name='dashboard'),
 ]
